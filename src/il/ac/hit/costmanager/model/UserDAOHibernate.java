@@ -7,30 +7,33 @@ import java.util.Objects;
 import org.hibernate.*;
 import org.hibernate.cfg.AnnotationConfiguration;
 
-public class UserDAOHibernet implements IUserDAO{
+public class UserDAOHibernate implements IUserDAO{
 	
 	 private static IUserDAO instance;
 	 private SessionFactory factory;
     
-	 private UserDAOHibernet() throws UserCostsManagerException {
+	 private UserDAOHibernate() throws UserCostsManagerDAOException {
 	        factory = new AnnotationConfiguration().configure().buildSessionFactory();
 	 }
-	  public static IUserDAO getInstance() throws UserCostsManagerException {
+	
+	 public static IUserDAO getInstance() throws UserCostsManagerDAOException {
 	        if (instance == null) {
-	            return instance = new UserDAOHibernet();
+	            return instance = new UserDAOHibernate();
 	        }
 
 	        return instance;
-	  }
+	 }
+	 
+	 
 	@Override
-	public User userRegister(String userName, String password) throws UserCostsManagerException {
+	public User userRegister(String userName, String password) throws UserCostsManagerDAOException {
 		 Session session = null;
 	        User user = null;
 	        try {
 	            session = factory.openSession();
 	            session.beginTransaction();
 	            if(!checkUserName(userName))
-	                throw new UserCostsManagerException("An attempt to register userName: '" + userName +"' was done, user already exists.");
+	                throw new UserCostsManagerDAOException("An attempt to register userName: '" + userName +"' was done, user already exists.");
 	            User userTemp = new User(userName, password);
 	            session.save(userTemp);
 	            session.getTransaction().commit();
@@ -59,7 +62,7 @@ public class UserDAOHibernet implements IUserDAO{
 	
 	
 	@Override
-	public User validateUser(String userName, String password) throws UserCostsManagerException {
+	public User validateUser(String userName, String password) throws UserCostsManagerDAOException {
 		Session session = null;
         User user = null;
         try {
@@ -72,7 +75,7 @@ public class UserDAOHibernet implements IUserDAO{
             List<?> users = query.list();
             // If the information sent doesn't fit a row in the DB
             if (users.size() == 0)
-                throw new UserCostsManagerException("Username '" + userName +"' is not valid or wrong password");
+                throw new UserCostsManagerDAOException("Username '" + userName +"' is not valid or wrong password");
             else
                 user = (User)users.get(0);
         }
@@ -91,7 +94,7 @@ public class UserDAOHibernet implements IUserDAO{
 	
 	
 	@Override
-	public boolean checkUserName(String username) throws UserCostsManagerException {
+	public boolean checkUserName(String username) throws UserCostsManagerDAOException {
 		 Session session = null;
 	        try
 	        {

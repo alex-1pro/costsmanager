@@ -16,5 +16,6 @@
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<!-- Mapping files -->
 		<mapping resource="userscostsmanager.hbm.xml"/>
+		<mapping resource="expense_costsmanager.hbm.xml" />
 </session-factory>
 </hibernate-configuration>
