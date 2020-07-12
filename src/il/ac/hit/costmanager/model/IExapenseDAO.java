@@ -8,6 +8,6 @@ public interface IExapenseDAO {
 	
 	public Expense [] getUserExpensesByMonth(int userId,String month) throws ExpenseCostsManagerDAOExeption;
 	
-	public double getTotalCost(int userId) throws ExpenseCostsManagerDAOExeption;
+	//public double getTotalCost(int userId) throws ExpenseCostsManagerDAOExeption;
 
 }
