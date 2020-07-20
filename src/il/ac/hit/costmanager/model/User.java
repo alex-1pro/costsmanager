@@ -28,27 +28,27 @@ public class User {
     
     	
 
-		void setId(int id) {
+	public	void setId(int id) {
     	this.id=id;
     }
 	
-	void setUserName(String name) {
+		public	void setUserName(String name) {
 		this.userName=name;
 	}
 
-	void setPassword(String password) {
+	public	void setPassword(String password) {
 		this.password=password;
 	}
 
-	int getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	String getUserName() {
+	public	String getUserName() {
 		return this.userName;
 	}
 
-	String getPassword() {
+	public	 String getPassword() {
 		return this.password;
 	}
 	

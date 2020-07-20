@@ -75,7 +75,7 @@ public class UserDAOHibernate implements IUserDAO{
             List<?> users = query.list();
             // If the information sent doesn't fit a row in the DB
             if (users.size() == 0)
-                throw new UserCostsManagerDAOException("Username '" + userName +"' is not valid or wrong password");
+                throw new UserCostsManagerDAOException("Username '" + userName +"' is not exist or wrong password");
             else
                 user = (User)users.get(0);
         }
@@ -94,15 +94,15 @@ public class UserDAOHibernate implements IUserDAO{
 	
 	
 	@Override
-	public boolean checkUserName(String username) throws UserCostsManagerDAOException {
+	public boolean checkUserName(String userName) throws UserCostsManagerDAOException {
 		 Session session = null;
 	        try
 	        {
 	            session = factory.openSession();
 	            session.beginTransaction();
 
-	            Query query = session.createQuery("FROM User U WHERE U.userName = :username")
-	                    .setString("username",username);
+	            Query query = session.createQuery("FROM User U WHERE U.userName= :username")
+	                    .setString("username",userName);
 	            List<?> users = query.list();
 	            if(users.size() != 0)
 	                return false;

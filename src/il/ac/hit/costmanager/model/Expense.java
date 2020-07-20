@@ -40,11 +40,11 @@ public class Expense {
 		this.userId = userId;
 	}
 
-	public double getTotal() {
+	public double getCost() {
 		return cost;
 	}
 
-	public void setTotal(double total) {
+	public void setCost(double total) {
 		this.cost = total;
 	}
 

@@ -18,19 +18,25 @@
 	  <p>Welcome! Please login:</p>
 	</div>
 
-	<form method="post" action="">
+	<form method="post" action="http://localhost:8080/CostManager/controller/login/tryToLogin">
 		<div class="form-group text-center">
-	        <input placeholder="User Name" type="text" name="userName" required/>
+	        <input placeholder="User Name" type="text" name="userName" required id="userName"/>
 	        <br></br>
-	        <input placeholder="Password" type="password" name="password" required/>
+	        <input placeholder="Password" type="password" name="password" required id="password"/>
 	        <br></br>
 	        <button type="submit" class="btn btn-primary">Login</button>
         </div>
     </form>
-	
+   
 	<div class="form-group text-center">
-		<a type="button" class="btn btn-light" href="register.jsp">Register</a>
+		<a type="button" class="btn btn-light" href="http://localhost:8080/CostManager/controller/register">Register</a>
 	</div>
+	<%
+	Boolean succsess=(Boolean)request.getAttribute("succsess");
+    if(succsess != null)
+        if(!succsess)
+            out.println("Wrong username or password.</br>Please try again.");
+	%>
 
 </body>
 </html>

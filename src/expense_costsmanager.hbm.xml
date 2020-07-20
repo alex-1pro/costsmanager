@@ -10,8 +10,8 @@
 		<property name="userId">
 			<column name="USERID"/>
 		</property>
-		<property name="total">
-			<column name="TOTAL"/>
+		<property name="cost">
+			<column name="COST"/>
 		</property>
 		<property name="type">
 			<column name="TYPE"/>

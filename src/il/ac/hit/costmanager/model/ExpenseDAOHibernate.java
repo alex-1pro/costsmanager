@@ -26,7 +26,7 @@ public class ExpenseDAOHibernate implements IExapenseDAO {
 	}
 
 	@Override
-	public boolean addUserExense(Expense expense) throws ExpenseCostsManagerDAOExeption {
+	public boolean addUserExpense(Expense expense) throws ExpenseCostsManagerDAOExeption {
 		boolean success = false;
 		Session session = null;
 		try {

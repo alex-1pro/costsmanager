@@ -19,7 +19,7 @@
 	  <p>Register:</p>
 	</div>
 
-		<form method="post" action="">
+		<form method="post" action="http://localhost:8080/CostManager/controller/register/tryToRegister">
 		<div class="form-group text-center">
 	        <input placeholder="User Name" class="form-control" type="text" name="userName" required/>
 	        <br></br>
@@ -28,6 +28,18 @@
 	        <button type="submit" class="btn btn-info">Register</button>
         </div>
     </form>
-
+  <%
+    Boolean succsess= (Boolean)request.getAttribute("succsess");
+       if(succsess!=null){
+  			if(!succsess)
+          	  out.println("Please chose another username.");
+  			
+          	  else if(succsess){   
+          		  out.println("Username created succsessfuly<br/>");
+          	  	  out.print("Click to "
+                         + "<a href="+"http://localhost:8080/CostManager/controller/login"+">login</a>");
+          	  }
+       }  	 
+    %>
 </body>
 </html>

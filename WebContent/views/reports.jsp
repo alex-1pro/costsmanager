@@ -13,20 +13,22 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
 <meta charset="windows-1255">
-<title>Expenses</title>
+<title>Monthly Report</title>
 </head>
 <body>
-	
+
 	<% User user = (User) session.getAttribute("user");
 	
-	// --- To TEST the expense with fake user ----
+	// --- To TEST with a fake user ----
 		if (user == null){
-		//	user = new User(99,"Jacob_TEST","123456");
+			//user = new User(99,"Jacob_TEST","123456");
 		}
 	// -------------------------------------------
+	
+
 	%>
-	
-	
+
+
       <!--Navbar-->
       <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top scrolling-navbar">
         <div class="container">
@@ -48,63 +50,42 @@
         </div>
       </nav>
       <!-- Navbar -->
-          
-          
+
+
 	<div class="jumbotron text-center">
 	  <a class="btn btn-primary btn-lg" href="http://localhost:8080/CostManager/controller/home" role="button">Back</a>
 	  <h1>Costs Manager</h1>
-	  <h3><%= user.getUserName() %> Expenses:</h3>
+	  <h3>Expenses Report:</h3>
 	</div>
 	
 	<div class="container">
-		
-		<form method="post" action="http://localhost:8080/CostManager/controller/expenses/addExpense">
-		
-			<div class="form-group text-center">
-			  <div class="form-row">
-			  
-			    <div class="form-group col-md-2">
-		        <input placeholder="Name" type="text" name="expenseDescription" id="expenseDescription" required/>
-		        </div>
-		        
-		        <div class="form-group col-md-3">
-		        <select class="custom-select" name="expenseType" id="expenseType" required>
-			   		<option selected>Choose Type</option>
-					<option value="1">Food</option>
-					<option value="2">Car</option>
-					<option value="3">House</option>
-				</select>
-		        </div>
-		        
-		        <div class="form-group col-md-2">
-		        <input placeholder="Cost" type="number" step="0.01" name="expenseCost" id="expenseCost" required/>
-		        </div>
-		        
-		        <div class="form-group col-md-3">
-		        <select class="custom-select" name="expenseMonth" id="expenseMonth" required>
-			   		<option selected>Choose Month</option>
-		            <option value="January">January</option>
-		            <option value="February">February</option>
-		            <option value="March">March</option>
-		            <option value="April">April</option>
-		            <option value="May">May</option>
-		            <option value="June">June</option>
-		            <option value="July">July</option>
-		            <option value="August">August</option>
-		            <option value="September">September</option>
-		            <option value="October">October</option>
-		            <option value="November">November</option>
-		            <option value="December">December</option>
-				</select>
-		        </div>
-		        
-		        <div class="form-group col-md-2">
-		        <button type="submit" class="btn btn-primary">Add</button>
-	            </div>
-	          </div>
-	        </div>
-	    </form>
-		
+	  <div class="form-group col-md-6">
+		<form method="post" action="http://localhost:8080/CostManager/controller/reports/filterByMonth">
+		  <label for="filteredMonth">Select month:</label>
+		  <select class="custom-select" id="filteredMonth" name="filteredMonth" required>
+			<option selected>Choose Month</option>
+			<option value="January">January</option>
+			<option value="February">February</option>
+			<option value="March">March</option>
+			<option value="April">April</option>
+			<option value="May">May</option>
+			<option value="June">June</option>
+			<option value="July">July</option>
+			<option value="August">August</option>
+			<option value="September">September</option>
+			<option value="October">October</option>
+			<option value="November">November</option>
+			<option value="December">December</option>
+		  </select>
+		  <input type="submit" value="Filter" class="btn btn-primary"/>
+		</form>
+	  </div>
+	  
+	  <div class="form-group col-md-3">
+		<form method="post" action="http://localhost:8080/CostManager/controller/reports">
+		  <input type="submit" value="Show all" class="btn btn-primary"/>
+		</form>
+	  </div>
 	</div>
 	
 	<div class="container">          
@@ -157,6 +138,5 @@
 		<a href="http://localhost:8080/CostManager/controller/login/logOut">Log Out</a>
 	</div>
 </footer>
-
 
 </html>

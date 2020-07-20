@@ -2,7 +2,7 @@ package il.ac.hit.costmanager.model;
 
 public interface IExapenseDAO {
 	
-	public boolean addUserExense(Expense expense) throws ExpenseCostsManagerDAOExeption;
+	public boolean addUserExpense(Expense expense) throws ExpenseCostsManagerDAOExeption;
 	
 	public Expense [] getUserExpenses(int userId) throws ExpenseCostsManagerDAOExeption;
 	
