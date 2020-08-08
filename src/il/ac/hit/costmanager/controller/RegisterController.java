@@ -10,45 +10,37 @@ import il.ac.hit.costmanager.model.UserDAOHibernate;
 
 import java.io.IOException;
 
+/**
+ * 
+ * @authors Alexey Belogurov & Jacob Graham
+ *
+ *this class extends from AbstractController which connects  and passes data between the jsp pages and the model objects.
+ */
+
+
 public class RegisterController extends AbstractController {
 	
    public boolean register(HttpServletRequest request, HttpServletResponse response, String data) {
       System.out.println("In RegisterController"); 
 	   return false;
    }
-
-   
+   /**
+    * try to register the user information sent in the form
+    * @param request The request which was sent to the controller
+    * @param response The response which was sent to the controller
+    * @param data Extra data if needed
+    * @return boolean returns if redirect was sent
+   */
    public boolean tryToRegister(HttpServletRequest request, HttpServletResponse response, String data) {
-//       String userName = request.getParameter("userName");
-//       String password = request.getParameter("password");
-//       System.out.println("here in controller.... "+userName +"------"+password);
-//       try {
-//          // IUserDAO iUserDAOHibernate = UserDAOHibernate.getInstance();
-//           IUserDAO userDAO =UserDAOHibernate.getInstance();
-//    	   User user = userDAO.userRegister(userName, password);
-//    	//   System.out.println("here in controller.... "+userName +"------"+password);
-//    	   System.out.println(user);
-//    	   response.sendRedirect("http://localhost:8080/CostManager/controller/login");
-//           request.setAttribute("isRegisteredSuccessfully",true);
-//       } catch (UserCostsManagerDAOException e) {
-//           System.out.println(e.getMessage());
-//           request.setAttribute("isRegisteredSuccessfully",false);
-//           return false;
-//       } catch (IOException e) {
-//           e.printStackTrace();
-//       }
-//       return true;
+
 	   
 	      String userName = request.getParameter("userName");
 	       String password = request.getParameter("password");
 	       System.out.println("here in controller.... "+userName +"------"+password);
 	       try {
-	          // IUserDAO iUserDAOHibernate = UserDAOHibernate.getInstance();
 	           IUserDAO userDAO =UserDAOHibernate.getInstance();
 	    	   User user = userDAO.userRegister(userName, password);
-	    	//   System.out.println("here in controller.... "+userName +"------"+password);
 	    	   System.out.println(user);
-	    	   //response.sendRedirect("http://localhost:8080/CostManager/controller/login");
 	    	   request.setAttribute("pass", password);
 	    	   response.setHeader("uName",userName );
 	    	   request.setAttribute("succsess",true);
@@ -57,9 +49,7 @@ public class RegisterController extends AbstractController {
 	           System.out.println(e.getMessage());
 	           request.setAttribute("succsess",false);
 	           return false;
-	       } //catch (IOException e) {
-	          // e.printStackTrace();
-	      // }
+	       } 
 	       return true;
    }
 

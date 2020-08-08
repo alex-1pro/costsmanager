@@ -6,7 +6,12 @@ import java.util.Objects;
 
 import org.hibernate.*;
 import org.hibernate.cfg.AnnotationConfiguration;
-
+/**
+ * @authors Alexey Belogurov & Jacob Graham
+ * 
+ * This class implements IUserDAO and communicate with a database
+ * 
+ * */
 public class UserDAOHibernate implements IUserDAO{
 	
 	 private static IUserDAO instance;
@@ -15,7 +20,9 @@ public class UserDAOHibernate implements IUserDAO{
 	 private UserDAOHibernate() throws UserCostsManagerDAOException {
 	        factory = new AnnotationConfiguration().configure().buildSessionFactory();
 	 }
-	
+	/**
+	 * @return the instance of this object, if no instance exists, create a new one.
+	 * */
 	 public static IUserDAO getInstance() throws UserCostsManagerDAOException {
 	        if (instance == null) {
 	            return instance = new UserDAOHibernate();
@@ -24,7 +31,13 @@ public class UserDAOHibernate implements IUserDAO{
 	        return instance;
 	 }
 	 
-	 
+	 /**
+	     * This method insert new user  to database.
+	     * @param userName adds to user name in database.
+	     * @param password user password.
+	     * @return the user object for the http session object if the registration succeeded, if not return null
+	     * @throws UserCostsManagerDAOException if user exites.
+	     */
 	@Override
 	public User userRegister(String userName, String password) throws UserCostsManagerDAOException {
 		 Session session = null;
@@ -61,6 +74,13 @@ public class UserDAOHibernate implements IUserDAO{
 	
 	
 	
+	/**
+    * This method validates username and password.
+    * @param userName its user name  validate.
+    * @param password user password  validate.
+    * @return the user object if username and password correct, else return null
+    * @throws UserCostsManagerDAOException if username or password arent correct.
+	*/
 	@Override
 	public User validateUser(String userName, String password) throws UserCostsManagerDAOException {
 		Session session = null;
@@ -82,7 +102,8 @@ public class UserDAOHibernate implements IUserDAO{
         catch (HibernateException e)
         {
             Transaction tx = Objects.requireNonNull(session).getTransaction();
-            if (tx.isActive()) tx.rollback();
+            if (tx.isActive()) 
+            	tx.rollback();
         }
         finally
         {
@@ -91,7 +112,11 @@ public class UserDAOHibernate implements IUserDAO{
         return user;
 	}
 	
-	
+	/**
+	 * This function get username and check if it's exits in database.
+	 * @param username its username to check
+	 * @return true if username exits else false
+	 * @throws UserCostsManagerDAOException in case the user already exists*/
 	
 	@Override
 	public boolean checkUserName(String userName) throws UserCostsManagerDAOException {

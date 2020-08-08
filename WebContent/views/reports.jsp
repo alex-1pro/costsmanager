@@ -12,20 +12,15 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/design.css">
+
 <meta charset="windows-1255">
 <title>Monthly Report</title>
 </head>
 <body>
 
-	<% User user = (User) session.getAttribute("user");
-	
-	// --- To TEST with a fake user ----
-		if (user == null){
-			//user = new User(99,"Jacob_TEST","123456");
-		}
-	// -------------------------------------------
-	
-
+	<% 
+	User user = (User) session.getAttribute("user");
 	%>
 
 
@@ -42,28 +37,27 @@
                 <a class="nav-link" href="http://localhost:8080/CostManager/controller/expenses">Expenses<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="http://localhost:8080/CostManager/controller/reports">Reports<span class="sr-only">(current)</span></a>
+                <a class="nav-link text-warning" href="http://localhost:8080/CostManager/controller/reports">Reports<span class="sr-only">(current)</span></a>
               </li>
             </ul>
+
+            <h5 class="text-light font-italic pt-1">Hello <%= user.getUserName()%></h5>
 		    <a class="btn btn-outline text-white" href="http://localhost:8080/CostManager/controller/login/logOut">Log Out</a>
             </div>
         </div>
       </nav>
       <!-- Navbar -->
 
+	<header>
 
-	<div class="jumbotron text-center">
-	  <a class="btn btn-primary btn-lg" href="http://localhost:8080/CostManager/controller/home" role="button">Back</a>
-	  <h1>Costs Manager</h1>
-	  <h3>Expenses Report:</h3>
-	</div>
+	<div class="view" style="background-image: url('https://medatech.com/wp-content/uploads/2017/11/Website-Background.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
 	
-	<div class="container">
-	  <div class="form-group col-md-6">
-		<form method="post" action="http://localhost:8080/CostManager/controller/reports/filterByMonth">
-		  <label for="filteredMonth">Select month:</label>
-		  <select class="custom-select" id="filteredMonth" name="filteredMonth" required>
-			<option selected>Choose Month</option>
+	<div class="container pt-2">
+
+		<form class="form-inline" method="post" action="http://localhost:8080/CostManager/controller/reports/filterByMonth">
+		  <label for="filteredMonth">Filter by month:</label>
+		  <select class="custom-select ml-3" id="filteredMonth" name="filteredMonth" required>
+			<option selected value="">Choose Month</option>
 			<option value="January">January</option>
 			<option value="February">February</option>
 			<option value="March">March</option>
@@ -77,18 +71,15 @@
 			<option value="November">November</option>
 			<option value="December">December</option>
 		  </select>
-		  <input type="submit" value="Filter" class="btn btn-primary"/>
-		</form>
-	  </div>
-	  
-	  <div class="form-group col-md-3">
-		<form method="post" action="http://localhost:8080/CostManager/controller/reports">
-		  <input type="submit" value="Show all" class="btn btn-primary"/>
-		</form>
-	  </div>
+		  <input type="submit" value="Filter" class="btn btn-primary form-control ml-3"/>
+		  
+		  <a href="http://localhost:8080/CostManager/controller/reports" class="btn btn-info ml-2">Show all</a>
+
+		</form> 
+
 	</div>
 	
-	<div class="container">          
+	<div class="container mt-3">          
 	  <table class="table table-hover">
 	    <thead>
 	      <tr>
@@ -131,12 +122,15 @@
 	  </table>
 	</div>
 
-</body>
+	</header>
 
-<footer>
-	<div class="jumbotron text-center">
-		<a href="http://localhost:8080/CostManager/controller/login/logOut">Log Out</a>
+    <main>
+	<div class="d-flex flex-column justify-content-between">
+		<div class="jumbotron text-center">
+			<p class="text-muted">Made by Jacob Graham & Alexey Belogurov</p>
+		</div>
 	</div>
-</footer>
-
+	</main>
+	
+</body>
 </html>

@@ -14,9 +14,22 @@ import il.ac.hit.costmanager.model.UserDAOHibernate;
 
 import java.util.Objects;
 
+/**
+ * @authors Alexey Belogurov & Jacob Graham 
+ * 
+ * this class extends from AbstractController which connects  and passes data between the jsp pages and the model objects.
+ * 
+ * */
+
 public class LoginController extends AbstractController {
 	
-	 
+/**
+    * Redirect to home URL if user is already logged in
+    * @param request The request which was sent to the controller
+    * @param response The response which was sent to the controller
+    * @param data Extra data if needed
+    * @return boolean returns if redirect was sent
+    */ 
 	    public boolean tryToLogin(HttpServletRequest request, HttpServletResponse response, String data) {
 	        String userName = request.getParameter("userName");
 	        String password = request.getParameter("password");
@@ -45,7 +58,13 @@ public class LoginController extends AbstractController {
 	        return false;
 	    }
 
-
+	    /**
+	     * Method for redirecting to "userLogged" after successful login action
+	     * @param request The request which was sent to the controller
+	     * @param response The response which was sent to the controller
+	     * @param data Extra data if needed
+	     * @return true since there's no need to load jsp in router
+	     */
 	 public boolean userLogged(HttpServletRequest request, HttpServletResponse response, String data) {
 	        RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/views/home_screen.jsp");
 	        try {
@@ -56,10 +75,16 @@ public class LoginController extends AbstractController {
 	        return true;
 	    }
 	 
-	 
+	  /**
+	     * Remove the user session information and redirect to login
+	     * @param request The request which was sent to the controller
+	     * @param response The response which was sent to the controller
+	     * @param data Extra data if needed
+	     * @return true since redirect always happen in logOut
+	     */
 	  public boolean logOut(HttpServletRequest request, HttpServletResponse response, String data) {
 	        request.getSession().removeAttribute("user");
-	     // removeAppCookie(response);
+	     
 	        try {
 	            response.sendRedirect("http://localhost:8080/CostManager/controller/login");
 	        } catch (IOException e) {
@@ -75,3 +100,5 @@ public class LoginController extends AbstractController {
 		}
 
 }
+
+

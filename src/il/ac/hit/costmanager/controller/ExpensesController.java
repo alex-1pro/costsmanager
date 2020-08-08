@@ -1,3 +1,4 @@
+
 package il.ac.hit.costmanager.controller;
 
 import java.io.IOException;
@@ -7,8 +8,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import il.ac.hit.costmanager.model.*;
 
+/**
+ *@authors Alexey Belogurov & Jacob Graham 
+ *
+ *this class extends from AbstractController which connects  and passes data between the jsp pages and the model objects.
+ **/
+
 public class ExpensesController extends AbstractController{
 
+	/**
+	 * method for expenses view, setting expenses attribute
+	 * @param request The request which was sent to the controller
+	 * @param response The response which was sent to the controller
+	 * @param data Extra data if needed
+	 * @return boolean returns if redirect was sent
+	 */
 	public boolean expenses(HttpServletRequest request, HttpServletResponse response, String data) {
 
 		System.out.println("Expenses opend");
@@ -20,9 +34,7 @@ public class ExpensesController extends AbstractController{
 		try {
 	
 			if(user == null){
-//				response.sendRedirect("http://localhost:8080/CostsManager/controller/login");
-//				return true;
-				
+			
 				expenses = ExpenseDAOHibernate.getInstance().getUserExpenses(99);
 			} else {
 				expenses = ExpenseDAOHibernate.getInstance().getUserExpenses(user.getId());
@@ -40,16 +52,23 @@ public class ExpensesController extends AbstractController{
 	}
 	
 	
-	
+	/**
+	 * /**
+	 * insert an expense into the database
+	 * @param request The request which was sent to the controller
+	 * @param response The response which was sent to the controller
+	 * @param data Extra data if needed
+	 * @return boolean returns if redirect was sent
+	 */
 	public boolean addExpense(HttpServletRequest request, HttpServletResponse response, String data) {
 		
 		User user = (User)request.getSession().getAttribute("user");
 		
-		// Only for test:
+		
 		if (user == null){
-			//user = new User(99,"Jacob_TEST","123456");
+			
 		}
-		// ------------
+		
 		
 		String type = request.getParameter("expenseType");
 		String month = request.getParameter("expenseMonth");
@@ -84,3 +103,4 @@ public class ExpensesController extends AbstractController{
 	}
 	
 }
+

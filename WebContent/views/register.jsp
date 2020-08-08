@@ -9,37 +9,97 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
+<link rel="stylesheet" type="text/css" href="login.css">
+
 <meta charset="windows-1255">
 <title>Register</title>
 </head>
 <body>
 
-	<div class="jumbotron text-center">
-	  <h1>Costs Manager</h1>
-	  <p>Register:</p>
-	</div>
-
-		<form method="post" action="http://localhost:8080/CostManager/controller/register/tryToRegister">
-		<div class="form-group text-center">
-	        <input placeholder="User Name" class="form-control" type="text" name="userName" required/>
-	        <br></br>
-	        <input placeholder="Password" class="form-control" type="password" name="password" required/>
-	        <br></br>
-	        <button type="submit" class="btn btn-info">Register</button>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top scrolling-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+			  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQeBhhqCJKc3UhLgcs9mea8V-orz3ZcMS8fyw&usqp=CAU" width="30" height="30" class="d-inline-block align-top" alt="">
+			  Cost Manager
+			</a>
+			<div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto"></ul>
+            <a class="btn btn-outline text-white" href="http://localhost:8080/CostManager/controller/login">Login</a>
+            </div>
         </div>
-    </form>
-  <%
-    Boolean succsess= (Boolean)request.getAttribute("succsess");
-       if(succsess!=null){
-  			if(!succsess)
-          	  out.println("Please chose another username.");
-  			
-          	  else if(succsess){   
-          		  out.println("Username created succsessfuly<br/>");
-          	  	  out.print("Click to "
-                         + "<a href="+"http://localhost:8080/CostManager/controller/login"+">login</a>");
-          	  }
-       }  	 
-    %>
+    </nav>
+    <!-- Navbar -->
+	
+	<header>
+	
+	<div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+	
+	<div class="container ph-2">
+
+	    <!--Grid-->
+	    <div class="row">
+	    <div class="col-12">
+	    
+	    
+	<div class="card mt-2 mb-5">
+	<div class="card-body">
+	
+		<div class="text-center">
+			<h3 class="text-primary">Register</h3>
+			<hr class="hr-light">
+		</div>
+	
+		<form method="post" action="http://localhost:8080/CostManager/controller/register/tryToRegister">
+			<div class="form-group text-center">
+		        <input placeholder="User Name" class="form-control" type="text" name="userName" required/>
+		        <input placeholder="Password" class="form-control mt-3" type="password" name="password" required/>
+		        <button type="submit" class="btn btn-info mt-3">Register</button>
+		        
+		        <%
+				    Boolean succsess= (Boolean)request.getAttribute("succsess");
+		        
+		        
+				       if(succsess!=null){
+				    	   out.println("<h3 class='text-center text-danger mt-3'>"+"succsess="+succsess+"</h3>");
+				  			if(!succsess)
+				  			
+				  				out.println("<h4 class='text-center text-danger mt-3'>Please chose another user name</h4>");
+				          	else if(succsess){  
+				          		 
+				          		out.println("<h4 class='text-center text-success mt-3'>User created succsessfuly<br/>");
+				          	  	out.print("Click to "
+				                         + "<a href="+"http://localhost:8080/CostManager/controller/login"+">login</a></h4>");
+				          	
+						         
+
+				           		
+				          	}
+				       }
+				      
+				       
+				    %>
+		        
+	        </div>
+	    </form>	
+	</div>
+	</div>
+	
+
+    
+    </div>
+    </div>
+    </div>
+    
+	</header>
+
+    <main>
+	<div class="d-flex flex-column justify-content-between">
+		<div class="jumbotron text-center">
+			<p class="text-muted">Made by Jacob Graham & Alexey Belogurov</p>
+		</div>
+	</div>
+	</main>
+    
 </body>
 </html>

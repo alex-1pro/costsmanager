@@ -1,3 +1,5 @@
+//
+//
 //package il.ac.hit.costmanager.controller;
 //
 //import java.io.IOException;
@@ -21,8 +23,7 @@
 //@WebServlet("/controller/*")
 //public class RouterServlet extends HttpServlet {
 //	private static final long serialVersionUID = 1L;
-//	//final String[]controllersNames = {"Expenses", "Login", "Register", "PageNotFound", "Home"};
-//	final String[]controllersNames = { "Login", "Register"};
+//	
 //	String controller = "";
 //	String action = "";
 //	String view = "";
@@ -42,31 +43,33 @@
 //	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 //			throws ServletException, IOException {
 //		// TODO Auto-generated method stub
-//	
-//	/*	
-//		  PrintWriter out = response.getWriter(); 
-//		String text =request.getRequestURI();
-//		//  String[] texts = text.split("/");
-//	
-//		String[] texts = request.getRequestURI().split("/");
-//		out.print("<br/>"+texts[0]); //???
-//		out.print("<br/>"+texts[1]); // CostManager 
-//		out.print("<br/>"+texts[2]); // controller
-//		out.print("<br/>"+texts[3]);// view 
-//		out.print("<br/>"+texts[4]); // action
-//	*/
-//	
 //		
-//
+//		// JACOB:
+//		// http://localhost:8080/CostsManager/controller/reports		
+//		// http://localhost:8080/CostsManager/controller/VIEW_NAME/FUNCTION_NAME
+//		
+//		// ALEXY:
+//		// http://localhost:8080/CostManager/controller/reports		
+//		// http://localhost:8080/CostManager/controller/VIEW_NAME/FUNCTION_NAME
+//		//
+//		//	replace VIEW_NAME and FUNCTION_NAME with values
+//		//	this is the action for the form in the view
+//		//  example:
+//		//  action="http://localhost:8080/CostManager/controller/expenses/addExpense
+//		//
+//		
 //		try {
 //				
 //			response.setContentType("text/html");
-//			PrintWriter out = response.getWriter();
+//			
 //			String[] texts = request.getRequestURI().split("/");
 //			
 //			if (texts.length > 3) {
 //				view = texts[3];
 //				controller = texts[3].substring(0, 1).toUpperCase() + texts[3].substring(1);
+//				
+//				System.out.println("view = " + view);
+//				System.out.println("controller = " + controller);
 //			}
 //			
 //			if (texts.length > 4)
@@ -74,29 +77,34 @@
 //			else
 //				action = view;
 //			
+//			System.out.println("action = " + action);
+//			
 //			if (texts.length > 5)
 //				data = texts[5];
 //			
 //			String controllerClassName = il.ac.hit.costmanager.Settings.CONTROLLERS_PACKAGE + "." + controller + "Controller";
-//			out.print(controllerClassName);			
-//			//added 
-//			Class<?> clazz = Class.forName(controllerClassName);
+//						
+//			System.out.println("controllerClassName= " + controllerClassName);
+//			
+//			System.out.println("Strating the Reflection:");
+//			
+//			Class clazz = Class.forName(controllerClassName);
 //			Method method = clazz.getMethod(action, HttpServletRequest.class, HttpServletResponse.class, String.class);
-//			out.print("<br/>"+method);		
+////			Method method = clazz.getMethod(view, HttpServletRequest.class, HttpServletResponse.class, String.class);
 //			method.invoke(clazz.newInstance(), request, response, data);
+//			
+//			System.out.println("After the Reflection");
 //			
 ////			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/"+ action +".jsp");
 //			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/"+ view +".jsp");
 //			dispatcher.include(request,response);
-//			
+//			System.out.println("After the Reflection----"+"/views/"+ view +".jsp");
 //		} catch(ClassNotFoundException | NoSuchMethodException | SecurityException
 //				| IllegalAccessException | IllegalArgumentException | InvocationTargetException
 //				| InstantiationException | CostsManagerException e) {
 //			
 //			e.printStackTrace();
 //		}
-//		
-//		
 //		
 //	}
 //
@@ -109,6 +117,12 @@
 //	}
 //
 //}
+//
+//
+
+
+
+
 
 package il.ac.hit.costmanager.controller;
 
@@ -128,6 +142,7 @@ import il.ac.hit.costmanager.CostsManagerException;
 
 
 /**
+ * @authors Alexey Belogurov & Jacob Graham 
  * Servlet implementation class RouterServlet
  */
 @WebServlet("/controller/*")
@@ -144,7 +159,7 @@ public class RouterServlet extends HttpServlet {
      */
     public RouterServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
@@ -152,21 +167,6 @@ public class RouterServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		// JACOB:
-		// http://localhost:8080/CostsManager/controller/reports		
-		// http://localhost:8080/CostsManager/controller/VIEW_NAME/FUNCTION_NAME
-		
-		// ALEXY:
-		// http://localhost:8080/CostManager/controller/reports		
-		// http://localhost:8080/CostManager/controller/VIEW_NAME/FUNCTION_NAME
-		//
-		//	replace VIEW_NAME and FUNCTION_NAME with values
-		//	this is the action for the form in the view
-		//  example:
-		//  action="http://localhost:8080/CostManager/controller/expenses/addExpense
-		//
 		
 		try {
 				
@@ -227,5 +227,7 @@ public class RouterServlet extends HttpServlet {
 	}
 
 }
+
+
 
 

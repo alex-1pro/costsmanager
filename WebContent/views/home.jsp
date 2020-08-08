@@ -12,25 +12,25 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/design.css">
+
 <meta charset="windows-1255">
 <title>Home Page</title>
 </head>
 <body>	
 	
-	<% User user = (User) session.getAttribute("user");
-	
-	// --- To TEST the expense with fake user ----
-		if (user == null){
-	
-		}
-	// -------------------------------------------
+	<% 
+	User user = (User) session.getAttribute("user");
+	//<i class="far fa-clipboard"></i>
+	//<h2 class="mx-auto pr-5 font-weight-bold text-warning">Home Screen</h2>
 	%>
 	
+	<header>
 	
-      <!--Navbar-->
+    <!--Navbar-->
       <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top scrolling-navbar">
         <div class="container">
-            <a class="navbar-brand" href="http://localhost:8080/CostManager/controller/home">
+            <a class="navbar-brand text-warning" href="http://localhost:8080/CostManager/controller/home">
 			  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQeBhhqCJKc3UhLgcs9mea8V-orz3ZcMS8fyw&usqp=CAU" width="30" height="30" class="d-inline-block align-top" alt="">
 			  Cost Manager
 			</a>
@@ -43,35 +43,61 @@
                 <a class="nav-link" href="http://localhost:8080/CostManager/controller/reports">Reports<span class="sr-only">(current)</span></a>
               </li>
             </ul>
+            
+            <h5 class="text-light font-italic pt-1">Hello <%= user.getUserName() %></h5>
 		    <a class="btn btn-outline text-white" href="http://localhost:8080/CostManager/controller/login/logOut">Log Out</a>
             </div>
         </div>
       </nav>
-      <!-- Navbar -->
+    <!-- Navbar -->
 	
-	
-	<div class="jumbotron text-center">
-	  <h3>Welcome <%= user.getUserName() %>!</h3>
-	</div>
 	
 	<div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
 	
-	<div class="container text-center">
-	<a href="http://localhost:8080/CostManager/controller/expenses" class="btn btn-primary btn-lg">Expenses</a>
-	</div>
-	<br></br>
-	<div class="container text-center">
-	<a href="http://localhost:8080/CostManager/controller/reports" class="btn btn-info btn-lg">Monthly Report</a>
-	</div>
+	<div class="container">
+	
+
+	
+	<!--Grid row-->
+        <div class="row" style="padding-top: 130px;">
+
+        <!--Grid column-->
+            <div class="col-md-4 mx-auto">
+                   
+                <a href="http://localhost:8080/CostManager/controller/expenses" class="btn btn-primary btn-lg">
+                <i class="fas fa-briefcase fa-2x mr-1"></i>Expenses
+                </a>
+                <h4 class="my-4 font-weight-bold">Expenses</h4>
+                <p class="grey-text">
+                	Add your expenses. Set type, cost, month and add a description.  
+                </p>
+            </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+            <div class="col-md-4 ">
+                <a href="http://localhost:8080/CostManager/controller/reports" class="btn btn-info btn-lg">
+                <i class="far fa-clipboard fa-2x mr-1"></i>Reports
+                </a>
+                <h4 class="my-4 font-weight-bold">Reports</h4>
+                <p class="grey-text">Get a report of your expenses. Filter them by month</p>
+            </div>
+        <!--Grid column-->
+
+        </div>
+	<!--Grid row-->
 	
 	</div>
 	
-</body>
-
-<footer>
-	<div class="jumbotron text-center">
-		<a href="http://localhost:8080/CostManager/controller/login/logOut">Log Out</a>
+	</header>
+	
+	<main>
+	<div class="d-flex flex-column justify-content-between">
+		<div class="jumbotron text-center">
+			<p class="text-muted">Made by Jacob Graham & Alexey Belogurov</p>
+		</div>
 	</div>
-</footer>
-
+	</main>
+	
+	</body>
 </html>

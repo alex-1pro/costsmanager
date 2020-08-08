@@ -7,9 +7,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Collections;
+/**
+ *  @authors Alexey Belogurov & Jacob Graham
+ * 
+ *  This class implements IExapenseDAO and communicate with a database 
+ */
 
 public class ExpenseDAOHibernate implements IExapenseDAO {
 
+	
 	private static IExapenseDAO instance;
 	private SessionFactory factory;
 
@@ -17,14 +23,20 @@ public class ExpenseDAOHibernate implements IExapenseDAO {
 		factory = new AnnotationConfiguration().configure().buildSessionFactory();
 
 	}
-
+	/**
+	 * @return the instance of this object, if no instance exists, create a new one.
+	 * */
 	public static IExapenseDAO getInstance() throws ExpenseCostsManagerDAOExeption {
 		if (instance == null) {
 			return instance = new ExpenseDAOHibernate();
 		}
 		return instance;
 	}
-
+	/** Add the expense to database
+	    * @param expense The expense object to add
+	    * @return true if add successed else return false 
+	    * @throws ExpenseCostsManagerDAOExeption in case of error
+	    */
 	@Override
 	public boolean addUserExpense(Expense expense) throws ExpenseCostsManagerDAOExeption {
 		boolean success = false;
@@ -47,6 +59,13 @@ public class ExpenseDAOHibernate implements IExapenseDAO {
 
 		return success;
 	}
+
+	/**
+     * Get array of all the user expenses by user id
+     * @param userId user id
+     * @return all the expenses of the user
+     * @throws ExpenseCostsManagerDAOExeption in case the user has no expenses yet
+     */
 
 	@Override
 	public Expense[] getUserExpenses(int userId) throws ExpenseCostsManagerDAOExeption {
@@ -72,6 +91,13 @@ public class ExpenseDAOHibernate implements IExapenseDAO {
 		}
 		return expenses;
 	}
+	/**
+     * Get array of all the user expenses by user id and by month
+     * @param userId user id
+     * @param month expenses month 
+     * @return all the expenses  of the required month
+     * @throws ExpenseCostsManagerDAOExeption in case the user has no expenses 
+     */
 
 	@Override
 	public Expense[] getUserExpensesByMonth(int userId, String month) throws ExpenseCostsManagerDAOExeption {
@@ -99,20 +125,12 @@ public class ExpenseDAOHibernate implements IExapenseDAO {
 		}
 		return expenses;
 	}
-
-//	@Override
-	/*
-	 * public double getTotalCost(int userId) throws ExpenseCostsManagerDAOExeption
-	 * { Session session=null; double totalCost;
-	 
-	
-	     
-	//	  String hql="SELECT SUM(E.cost)  FROM Expense E WHERE E.userId= :user_id"; Query
-		 
-		 
-		
-		
-	}*/
+	/**
+	 *toArray function get list of expenses and casts and returns array of expenses 
+	 *used in  getUserExpenses and getUserExpensesByMonth.
+	 *@param expensesList casting from expenses list raw type to expenses array
+     *@return the expenses as array
+	  */
 
 	public Expense[] toArray(List<Expense> expensesList) {
 		int i = expensesList.size();

@@ -1,32 +1,35 @@
 package il.ac.hit.costmanager.model;
-
+/**
+ * 
+ *  @authors Alexey Belogurov & Jacob Graham
+ * 
+ * This class represents user. 
+ * */
 public class User {
+	/**
+	 *@param id users id
+	 *@param userName users name
+	 *@param password users password*/
 	private int id;
 	private String userName;
 	private String password;
 	
-    public User(){super();}//not sure if need super()
-    
-	/*
-	 * public User(int id,String userName,String password) { this.id=id;
-	 * this.userName=userName; this.password=password;
-	 * 
-	 * }
-	 */
+    public User(){super();}
 	
     public User(String userName, String password) {
-    	this.userName=userName;
-    	this.password=password;
-    	
+    	setUserName(userName);
+    	setPassword(password);
     }
     
     public User(User u) {
-    	this.id=u.id;
-    	this.password=u.password;
-    	this.userName=u.userName;
+    	setUserName(u.userName);
+    	setPassword(u.password);
+    	setId(u.id);
+ 
     }
-    
-    	
+    /**
+	 *getters and setters for params.
+	 */
 
 	public	void setId(int id) {
     	this.id=id;

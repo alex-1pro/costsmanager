@@ -1,25 +1,47 @@
 package il.ac.hit.costmanager.model;
-
+/**
+ * @authors Alexey Belogurov & Jacob Graham
+ * 
+ * This class represents expense. 
+ * */
 public class Expense {
+	/**
+	 *@param id expense id
+	 *@param userId expense userId
+	 *@param cost expense cost
+	 *@param type expense type
+	 *@param month expense month
+	 *@param description expense description
+	 */
+	
 	private int id;
 	private int userId;
 	private double cost;
 	private String type;
 	private String month;
 	private String description;
-	
+	/**
+	 * empty constructor needs for hibernat*/
 	public Expense() { 
 		super();
 	}
 
-	
+	/**
+	 * constructor whith params
+	 *@param id expense id
+	 *@param userId expense userId
+	 *@param cost expense cost
+	 *@param type expense type
+	 *@param month expense month
+	 *@param description expense description 
+	 **/
 
 	public Expense(int userId, double total, String type, String month, String description) {
-		this.userId = userId;
-		this.cost = total;
-		this.type = type;
-		this.month = month;
-		this.description = description;
+		setId(userId);
+		setCost(total);
+		setType(type);
+		setMonth(month);
+		setDescription(description);
 	}
 
 
