@@ -7,7 +7,7 @@ package il.ac.hit.costmanager.model;
  */
 
 
-public interface IExapenseDAO {
+public interface IExpenseDAO {
 	
 	/** Add the expense to database
     * @param expense The expense object to add
