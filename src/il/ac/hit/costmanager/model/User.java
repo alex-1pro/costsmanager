@@ -1,7 +1,7 @@
 package il.ac.hit.costmanager.model;
 /**
  * 
- *  @authors Alexey Belogurov & Jacob Graham
+ *  @author Alexey Belogurov & Jacob Graham
  * 
  * This class represents user. 
  * */

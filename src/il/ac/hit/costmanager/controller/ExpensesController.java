@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import il.ac.hit.costmanager.model.*;
 
 /**
- *@authors Alexey Belogurov & Jacob Graham 
+ *@author Alexey Belogurov & Jacob Graham 
  *
  *this class extends from AbstractController which connects  and passes data between the jsp pages and the model objects.
  **/
@@ -86,7 +86,7 @@ public class ExpensesController extends AbstractController{
 				
 			} else {
 				
-				IExapenseDAO iExpenseDAOHibernate = ExpenseDAOHibernate.getInstance();
+				IExpenseDAO iExpenseDAOHibernate = ExpenseDAOHibernate.getInstance();
 				iExpenseDAOHibernate.addUserExpense(expense);
 				request.setAttribute("addedSuccessfully",true);
 				

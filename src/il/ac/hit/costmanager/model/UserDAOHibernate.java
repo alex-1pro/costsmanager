@@ -7,7 +7,7 @@ import java.util.Objects;
 import org.hibernate.*;
 import org.hibernate.cfg.AnnotationConfiguration;
 /**
- * @authors Alexey Belogurov & Jacob Graham
+ * @author Alexey Belogurov & Jacob Graham
  * 
  * This class implements IUserDAO and communicate with a database
  * 

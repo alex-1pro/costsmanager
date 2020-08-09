@@ -61,7 +61,7 @@
 		        
 		        
 				       if(succsess!=null){
-				    	   out.println("<h3 class='text-center text-danger mt-3'>"+"succsess="+succsess+"</h3>");
+				    	  
 				  			if(!succsess)
 				  			
 				  				out.println("<h4 class='text-center text-danger mt-3'>Please chose another user name</h4>");

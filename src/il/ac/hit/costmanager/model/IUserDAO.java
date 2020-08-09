@@ -1,6 +1,6 @@
 package il.ac.hit.costmanager.model;
 /**
- * @authors Alexey Belogurov & Jacob Graham
+ * @author Alexey Belogurov & Jacob Graham
  * 
  * Provides an interface to our DOA that allows to add users to database , checks if user already exits and validate user.
  */

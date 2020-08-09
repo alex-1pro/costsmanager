@@ -8,15 +8,15 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Collections;
 /**
- *  @authors Alexey Belogurov & Jacob Graham
+ *  @author Alexey Belogurov & Jacob Graham
  * 
  *  This class implements IExapenseDAO and communicate with a database 
  */
 
-public class ExpenseDAOHibernate implements IExapenseDAO {
+public class ExpenseDAOHibernate implements IExpenseDAO {
 
 	
-	private static IExapenseDAO instance;
+	private static IExpenseDAO instance;
 	private SessionFactory factory;
 
 	private ExpenseDAOHibernate() throws ExpenseCostsManagerDAOExeption {
@@ -26,7 +26,7 @@ public class ExpenseDAOHibernate implements IExapenseDAO {
 	/**
 	 * @return the instance of this object, if no instance exists, create a new one.
 	 * */
-	public static IExapenseDAO getInstance() throws ExpenseCostsManagerDAOExeption {
+	public static IExpenseDAO getInstance() throws ExpenseCostsManagerDAOExeption {
 		if (instance == null) {
 			return instance = new ExpenseDAOHibernate();
 		}

@@ -1,6 +1,6 @@
 package il.ac.hit.costmanager.model;
 /**
- * @authors Alexey Belogurov & Jacob Graham
+ * @author Alexey Belogurov & Jacob Graham
  * 
   Thrown to indicate a problem whith database managemet 
   */

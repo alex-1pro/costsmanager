@@ -142,7 +142,7 @@ import il.ac.hit.costmanager.CostsManagerException;
 
 
 /**
- * @authors Alexey Belogurov & Jacob Graham 
+ * @author Alexey Belogurov & Jacob Graham 
  * Servlet implementation class RouterServlet
  */
 @WebServlet("/controller/*")

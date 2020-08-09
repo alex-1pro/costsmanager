@@ -1,7 +1,7 @@
 package il.ac.hit.costmanager.model;
 /**
  * 
- * @authors Alexey Belogurov & Jacob Graham
+ * @author Alexey Belogurov & Jacob Graham
  * 
  *  Provides an interface to our DOA that allows to add  expenses to database and get data from it.
  */

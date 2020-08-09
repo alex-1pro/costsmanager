@@ -1,6 +1,6 @@
 package il.ac.hit.costmanager.model;
 /**
- * @authors Alexey Belogurov & Jacob Graham
+ * @author Alexey Belogurov & Jacob Graham
  * 
  * This class represents expense. 
  * */
@@ -36,8 +36,8 @@ public class Expense {
 	 *@param description expense description 
 	 **/
 
-	public Expense(int userId, double total, String type, String month, String description) {
-		setId(userId);
+    public Expense(int userId, double total, String type, String month, String description) {
+		setUserId(userId);
 		setCost(total);
 		setType(type);
 		setMonth(month);
@@ -49,6 +49,8 @@ public class Expense {
 	public int getId() {
 		return id;
 	}
+
+	
 
 	public void setId(int id) {
 		this.id = id;

@@ -15,7 +15,7 @@ import il.ac.hit.costmanager.model.UserDAOHibernate;
 import java.util.Objects;
 
 /**
- * @authors Alexey Belogurov & Jacob Graham 
+ * @author Alexey Belogurov & Jacob Graham 
  * 
  * this class extends from AbstractController which connects  and passes data between the jsp pages and the model objects.
  * 
